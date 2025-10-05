@@ -1,8 +1,5 @@
-/* ------------- CONFIG -------------- */
-/* Replace with your OpenWeather API key */
 const API_KEY = "1c258ee49ca8c8ecb7230904408d0817";
 
-/* Elements */
 const unitSelect = document.getElementById("unitSelect");
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
@@ -22,12 +19,10 @@ const dailyCards = document.getElementById("dailyCards");
 const daySelect = document.getElementById("daySelect");
 const hourlyList = document.getElementById("hourlyList");
 
-/* runtime state */
 let currentUnit = unitSelect.value || "metric";
 let forecastData = null;
 let availableDays = [];
 
-/* ---------- helpers ---------- */
 function toLocalDate(ts, tzOffsetSeconds = 0) {
   return new Date((ts + tzOffsetSeconds) * 1000);
 }
@@ -41,7 +36,6 @@ function iconUrl(icon) {
   return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
-/* ---------- data processing ---------- */
 function groupForecastByDay(list, tzOffsetSeconds = 0) {
   const map = {};
   list.forEach(item => {
@@ -79,7 +73,6 @@ function getDailySummary(map, tzOffsetSeconds = 0) {
   return days;
 }
 
-/* ---------- UI renderers ---------- */
 function renderMainCard(cityObj, firstEntry) {
   const tz = cityObj.timezone || 0;
   cityName.textContent = `${cityObj.name}, ${cityObj.country}`;
